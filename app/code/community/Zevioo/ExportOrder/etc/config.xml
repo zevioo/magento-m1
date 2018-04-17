@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Zevioo_ExportOrder>
+      <version>0.1.0</version>
+    </Zevioo_ExportOrder>
+  </modules>
+  <global>
+    <helpers>
+      <exportorder>
+        <class>Zevioo_ExportOrder_Helper</class>
+      </exportorder>
+    </helpers>
+	<blocks>
+	  <exportorder>
+		<class>Zevioo_ExportOrder_Block</class>
+	  </exportorder>
+	</blocks>
+	<models>
+	  <exportorder>
+		<class>Zevioo_ExportOrder_Model</class>
+		<resourceModel>exportorder_mysql4</resourceModel>
+	  </exportorder>
+	  <exportorder_mysql4>
+		<class>Zevioo_ExportOrder_Model_Mysql4</class>
+		<entities>		  
+			  <export>
+				<table>order_export_information</table>
+			  </export>
+        </entities>
+	  </exportorder_mysql4>
+	</models>
+	<resources>
+	  <exportorder_setup>
+		<setup>
+		  <module>Zevioo_ExportOrder</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </exportorder_setup>
+	  <exportorder_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </exportorder_write>
+	  <exportorder_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </exportorder_read>
+	  <salesattribute1510056898_setup>
+		<setup>
+		  <module>Zevioo_ExportOrder</module>
+		  <class>Mage_Sales_Model_Mysql4_Setup</class>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </salesattribute1510056898_setup>
+	  <salesattribute1510056898_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </salesattribute1510056898_write>
+	  <salesattribute1510056898_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </salesattribute1510056898_read>
+	</resources>
+    <events>
+	  <checkout_onepage_controller_success_action> <!-- identifier of the event we want to catch -->
+        <observers>
+          <checkout_onepage_controller_success_action_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>exportorder/observer</class> <!-- observers class alias -->
+            <method>ExportSuccessOrder</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </checkout_onepage_controller_success_action_handler>
+        </observers>
+      </checkout_onepage_controller_success_action>
+	  <order_cancel_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <order_cancel_after_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>exportorder/observer</class> <!-- observers class alias -->
+            <method>ExportCancelOrder</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </order_cancel_after_handler>
+        </observers>
+      </order_cancel_after>
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <exportorder>
+	    <use>admin</use>
+		<args>
+		  <module>Zevioo_ExportOrder</module>
+		  <frontName>admin_exportorder</frontName>
+		</args>
+	  </exportorder>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <exportorder module="exportorder">
+		<title>Zevioo</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <export module="exportorder">
+		    <title>Export Report</title>
+			<sort_order>0</sort_order>
+			<action>admin_exportorder/adminhtml_export</action>
+		  </export>
+		  <export_config module="exportorder">
+		    <title>Zevioo Configuration</title>
+			<sort_order>1</sort_order>
+			<action>adminhtml/system_config/edit/section/export_api/</action>
+		  </export_config>
+		</children>
+	  </exportorder>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<exportorder translate="title" module="exportorder">
+			  <title>Export Report</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+				  <export translate="title">
+					<title>Export Report</title>
+					<sort_order>0</sort_order>
+				  </export>
+			  </children>
+			</exportorder>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<exportorder>
+		  <file>exportorder.xml</file>
+		</exportorder>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

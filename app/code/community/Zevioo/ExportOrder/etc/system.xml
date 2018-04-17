@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<export_order_view translate="label" module="exportorder">
+            <label>Zevioo Export Order Via Api</label>
+            <sort_order>0</sort_order>
+        </export_order_view>
+	  </tabs>
+	  <sections>
+		<export_api  translate="label" module="exportorder">                    
+		<label>Api Configuration</label>
+		<tab>export_order_view</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <api_config translate="label"> 
+					  <label>Credential</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>1</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <username translate="label">
+                            <label>Username</label>
+							<frontend_type>password</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </username>
+                          <password translate="label">
+                            <label>Password</label>
+							<frontend_type>password</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </password>
+                          <!-- <debug translate="label">
+                            <label>Debug </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </debug> -->
+					   </fields>
+					   </api_config>
+				      	<module_config translate="label"> 
+						  	<label>Module Configuration</label>
+						  	<frontend_type>text</frontend_type>
+						  	<sort_order>0</sort_order>
+						  	<show_in_default>1</show_in_default>
+						  	<show_in_website>1</show_in_website>
+						  	<show_in_store>1</show_in_store>
+				       		<fields>
+	                          	<enable translate="label">
+		                            <label>Enable </label>
+		                            <frontend_type>select</frontend_type>
+		                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+		                            <sort_order>0</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+	                          	</enable>
+	                           	<delivery_shipping>
+		                            <label>Select Delivery Days</label>
+		                            <frontend_model>exportorder/options</frontend_model>
+									<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+		                            <sort_order>1</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+		                            <comment>Set delivery delay in days respective of shipping method</comment>
+		                        </delivery_shipping>
+		                        <!-- <default_delivery_shipping translate="label">
+		                            <label>Default Delivery Day</label>
+									<frontend_type>text</frontend_type>
+		                            <sort_order>0</sort_order>
+		                            <show_in_default>1</show_in_default>
+		                            <show_in_website>1</show_in_website>
+		                            <show_in_store>1</show_in_store>
+	                          	</default_delivery_shipping> -->
+					   		</fields>
+					   </module_config>
+					</groups>
+		</export_api>
+	  </sections>
+</config>
