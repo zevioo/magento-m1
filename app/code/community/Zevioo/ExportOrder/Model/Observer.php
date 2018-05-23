@@ -72,7 +72,7 @@ class Zevioo_ExportOrder_Model_Observer
             	$params['DDT'] = $delivery_date;
             	$params['EML'] = $billingaddress->getData('email');
             	$params['FN'] = $order->getData('customer_firstname');
-            	$params['LN'] = $order->getData('customer_lastname');
+            	$params['LN'] = substr($order->getData('customer_lastname'),0,1);
             	$params['PC'] =  $billingaddress->getData('postcode');
             	$orderItems = $order->getAllVisibleItems();
             	foreach ($orderItems as $item) {
